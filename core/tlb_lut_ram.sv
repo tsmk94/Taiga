@@ -22,6 +22,7 @@
 
 import taiga_config::*;
 import taiga_types::*;
+import riscv_types::*;
 
 module tlb_lut_ram #(
         parameter WAYS = 2,

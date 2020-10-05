@@ -22,6 +22,7 @@
 
 import l2_config_and_types::*;
 import taiga_types::*;
+import riscv_types::*;
 
 module l2_arbiter (
         input logic clk,

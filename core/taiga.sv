@@ -20,11 +20,13 @@
  *             Eric Matthews <ematthew@sfu.ca>
  */
 
+module taiga
+
 import taiga_config::*;
 import riscv_types::*;
 import taiga_types::*;
 
-module taiga (
+(
         input logic clk,
         input logic rst,
 

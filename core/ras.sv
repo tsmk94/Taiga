@@ -20,11 +20,13 @@
  *             Eric Matthews <ematthew@sfu.ca>
  */
  
+module ras
+
 import taiga_config::*;
 import riscv_types::*;
 import taiga_types::*;
 
-module ras (
+(
         input logic clk,
         input logic rst,
         input logic gc_fetch_flush,

@@ -20,11 +20,13 @@
  *             Eric Matthews <ematthew@sfu.ca>
  */
 
+module load_store_unit
+
 import taiga_config::*;
 import riscv_types::*;
 import taiga_types::*;
 
-module load_store_unit (
+(
         input logic clk,
         input logic rst,
         input load_store_inputs_t ls_inputs,
