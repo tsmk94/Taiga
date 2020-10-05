@@ -124,6 +124,7 @@ module register_file_and_writeback
     //Register Files
     //Implemented in seperate module as there is not universal tool support for inferring
     //arrays of memory blocks.
+    logic update_lvt [COMMIT_PORTS];
     generate for (i = 0; i < COMMIT_PORTS; i++) begin
         register_file #(.NUM_READ_PORTS(REGFILE_READ_PORTS)) register_file_blocks (
             .clk, .rst,
@@ -142,7 +143,6 @@ module register_file_and_writeback
     //write to a given register.  This check allows multiple oustanding writes
     //to the same register.  As instructions can complete out-of-order, only
     //the most recently issued write to any given register will be committed
-    logic update_lvt [COMMIT_PORTS];
     always_comb begin
         update_lvt[0] = retired[0];// & (alu_selected ? alu_issued : (id_for_rd[0] == ids_retiring[0]));
         for (int i = 1; i < COMMIT_PORTS; i++)

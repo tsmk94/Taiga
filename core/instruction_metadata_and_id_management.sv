@@ -200,6 +200,8 @@ module instruction_metadata_and_id_management
     //As there are multiple completion sources, each source toggles a bit in its own LUTRAM.
     //All LUTRAMs are then xor-ed together to produce the status of the ID.
     //TODO: support arbitrary rst assertion (clear signal from global control)
+    logic id_not_in_decode_issue;
+    logic id_not_inflight;
 
     //Instruction decoded and (issued or flushed) pair
     toggle_memory decode_toggle_mem (
@@ -292,8 +294,6 @@ module instruction_metadata_and_id_management
     end endgenerate
 
     //Computed one cycle in advance using pc_id_next
-    logic id_not_in_decode_issue;
-    logic id_not_inflight;
     assign id_not_in_decode_issue = ~(decoded_status ^ decoded_issued_status);
     assign id_not_inflight =
         ~(issued_status ^

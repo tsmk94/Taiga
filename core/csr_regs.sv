@@ -127,6 +127,7 @@ module csr_regs
 
     ////////////////////////////////////////////////////
     //Exception Check
+    privilege_t privilege_level;
     assign privilege_exception = new_request & (csr_addr.privilege > privilege_level);
     assign csr_exception.valid = new_request & (invalid_addr | privilege_exception);
 
@@ -164,7 +165,6 @@ module csr_regs
     ////////////////////////////////////////////////////
     //Non-Constant Registers
     mstatus_t mstatus;
-    privilege_t privilege_level;
     privilege_t next_privilege_level;
 
     logic[XLEN-1:0] mtvec;
