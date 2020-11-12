@@ -30,6 +30,8 @@ module branch_predictor_ram
         )
         (
         input logic clk,
+        input logic rst,
+        
         input logic [$clog2(C_DEPTH)-1:0] write_addr,
         input logic write_en,
         input logic [$clog2(C_DEPTH)-1:0] read_addr,
@@ -51,7 +53,9 @@ module branch_predictor_ram
         if (write_en)
             branch_ram[write_addr] = write_data;//Forcing write first behaviour for simulation
     // synthesis translate_on
-        if (read_en)
+        if (rst)
+            read_data <= 0;
+        else if (read_en)
             read_data <= branch_ram[read_addr];
     end
 
